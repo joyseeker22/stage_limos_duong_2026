@@ -154,8 +154,6 @@ def save_results(df_main, original_data, distance_km, output_filename):
 
     
 def main():
-    
-    # STEP 1: Ask for file path
     print("\Please enter the path to your Excel file.")
     print("-" * 70)
     
@@ -164,57 +162,37 @@ def main():
         INPUT_EXCEL = INPUT_EXCEL.strip('"').strip("'")
         
         if os.path.exists(INPUT_EXCEL):
-            print(f"✅ File found: {INPUT_EXCEL}")
+            print(f" File found: {INPUT_EXCEL}")
             break
         else:
             print(f"File not found: {INPUT_EXCEL}")
-            print("   Please check the path and try again.")
+            print(" Please check the path and try again.")
             print()
     
-    # STEP 2: Output file name
     print(f"\Output file name (press Enter for default):")
     default_output = "output_2factory_data.xlsx"
-    OUTPUT_EXCEL = input(f"   Output name [{default_output}]: ").strip()
+    OUTPUT_EXCEL = input(f" Output name [{default_output}]: ").strip()
     
     if not OUTPUT_EXCEL:
         OUTPUT_EXCEL = default_output
-        print(f"   Using default: {OUTPUT_EXCEL}")
+        print(f" Using default: {OUTPUT_EXCEL}")
     
     if not OUTPUT_EXCEL.endswith('.xlsx'):
         OUTPUT_EXCEL += '.xlsx'
-    
-    # STEP 3: Confirmation
-    print("\n" + "=" * 70)
-    print("📋 SUMMARY")
+        
+    print("SUMMARY")
     print("=" * 70)
     print(f"   Input file:    {INPUT_EXCEL}")
     print(f"   Output file:   {OUTPUT_EXCEL}")
     print("=" * 70)
     
-    proceed = input("\n✅ Proceed? (Y/n): ").strip().lower()
+    proceed = input("\ Proceed? (Y/n): ").strip().lower()
     if proceed and proceed != 'y':
         print("❌ Cancelled by user.")
         return
-    
-    # STEP 4: Read Excel
-    print("\n" + "=" * 70)
-    print("STEP 1: Reading your Excel file")
-    print("=" * 70)
-    
+        
     original_data = read_excel_file(INPUT_EXCEL)
-    
-    # STEP 5: Create 2-factory dataset
-    print("\n" + "=" * 70)
-    print("STEP 2: Creating 2-factory dataset")
-    print("=" * 70)
-    
     df_main, distance = create_2factory_dataset(original_data)
-    
-    # STEP 6: Save
-    print("\n" + "=" * 70)
-    print("STEP 3: Saving results")
-    print("=" * 70)
-    
     save_results(df_main, original_data, distance, OUTPUT_EXCEL)
 
 if __name__ == "__main__":
