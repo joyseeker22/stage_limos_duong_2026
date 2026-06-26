@@ -13,6 +13,10 @@ python3 src/problem/dataset_2fac.py
 ```
 ---
 ## Dataset
+The dataset included in this repository is used for testing the code. In each dataset, a factory consists of multiple jobs scheduling scenarios with stochastic elements. 
+Source: https://github.com/SamanNsr/Hybrid-Simheuristic-BiObj-Stoch-FJSSP.git
 
+## Code 
+The code generates a new dataset for 2 factories from the original one of only one factory. It maps out the compatibility of each job with specific machines across both factories and calculates the baseline distance between the facilities. The distance is randomly assigned between 1 and 10 km, assuming both factories operate within the same industrial hub. 
     
   
